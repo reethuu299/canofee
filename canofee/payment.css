@@ -1,0 +1,120 @@
+/* SAME COLORS – DO NOT CHANGE */
+:root{
+  --brown:#c8a077;
+  --cream:#faefe4;
+  --text:#3e2b23;
+  --muted:#8f7a65;
+  --white:#fff;
+  --shadow:0 10px 30px rgba(62,43,35,.08);
+}
+
+body{
+  margin:0;
+  font-family:Poppins,system-ui;
+  background:linear-gradient(180deg,var(--cream),#fbf2ea);
+  color:var(--text);
+}
+
+.wrap{max-width:1100px;margin:auto;padding:20px}
+.site-header{text-align:center}
+
+.layout{display:grid;grid-template-columns:1fr 400px;gap:24px}
+@media(max-width:900px){.layout{grid-template-columns:1fr}}
+
+.card{
+  background:var(--white);
+  border-radius:14px;
+  padding:18px;
+  box-shadow:var(--shadow);
+}
+
+.order-item{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:8px;
+}
+
+.pay-card{
+  width:100%;
+  padding:14px;
+  margin-top:10px;
+  border-radius:10px;
+  border:1px solid #ecdccf;
+  background:#fff;
+  cursor:pointer;
+  font-weight:700;
+}
+.pay-card:hover{background:#fff7f0}
+
+.btn{
+  padding:10px 14px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:700;
+}
+.btn.primary{background:var(--brown);color:#fff;border:none}
+.btn.ghost{border:1px solid #e6d5c0;background:transparent}
+
+.trust{
+  margin-top:16px;
+  font-size:14px;
+  color:var(--muted);
+}
+
+.success-panel{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.4);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.hidden{display:none}
+/* =========================
+   SUCCESS ANIMATION
+========================= */
+
+.success-panel {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.success-panel.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.success-card {
+  transform: scale(0.9) translateY(20px);
+  opacity: 0;
+  animation: successPop 0.45s ease forwards;
+}
+
+@keyframes successPop {
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Tick animation */
+.checkmark {
+  width: 64px;
+  height: 64px;
+  margin: 10px auto;
+}
+
+.checkmark svg {
+  width: 100%;
+  height: 100%;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: draw 0.6s ease forwards;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}

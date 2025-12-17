@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Checkout | CANOFEE</title>
+  <link rel="stylesheet" href="checkout.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <h1>Checkout</h1>
+    </div>
+  </header>
+
+  <main class="wrap main-grid">
+    <!-- LEFT: Cart -->
+    <section class="cart-area">
+      <h2>Your Cart</h2>
+      <div id="cartItems" class="cart-list">
+        <!-- JS renders items -->
+      </div>
+      <div class="cart-actions">
+        <button id="continueShopping" class="btn ghost">← Continue Shopping</button>
+      </div>
+    </section>
+
+    <!-- RIGHT: Summary + form -->
+    <aside class="summary-area">
+      <div class="summary-card">
+        <h2>Order Summary</h2>
+
+        <div class="summary-line">
+          <span>Subtotal</span>
+          <span id="subtotal">₹0</span>
+        </div>
+
+        <div class="summary-line">
+          <span>Delivery Charge</span>
+          <span id="deliveryCharge">₹20</span>
+        </div>
+
+        <div class="summary-line">
+          <span>Tax (5%)</span>
+          <span id="tax">₹0</span>
+        </div>
+
+        <div class="coupon-row">
+          <input id="couponInput" placeholder="Have a coupon?" />
+          <button id="applyCoupon" class="btn small">Apply</button>
+        </div>
+        <div id="couponMsg" class="coupon-msg" aria-live="polite"></div>
+
+        <hr>
+
+        <div class="summary-total">
+          <strong>Total</strong>
+          <strong id="grandTotal">₹0</strong>
+        </div>
+
+        <div class="form-block">
+          <h3>Customer Details</h3>
+          <label>Name <input id="custName" type="text" /></label>
+          <label>Phone <input id="custPhone" type="text" /></label>
+          <label>Address <textarea id="custAddress" rows="3"></textarea></label>
+        </div>
+
+        <div class="form-block">
+          <h3>Delivery Time</h3>
+          <label class="radio-inline"><input type="radio" name="deliverOpt" value="now" checked> Deliver Now</label>
+          <label class="radio-inline"><input type="radio" name="deliverOpt" value="schedule"> Schedule</label>
+
+          <div id="scheduleBox" class="schedule-box hidden">
+            <label>Date <input type="date" id="schedDate" /></label>
+            <label>Time slot
+              <select id="schedSlot">
+                <option>09:00 - 10:00</option>
+                <option>10:00 - 11:00</option>
+                <option>11:00 - 12:00</option>
+                <option>12:00 - 13:00</option>
+                <option>13:00 - 14:00</option>
+                <option>14:00 - 15:00</option>
+                <option>15:00 - 16:00</option>
+                <option>16:00 - 17:00</option>
+                <option>17:00 - 18:00</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-block">
+          <h3>Tip (Optional)</h3>
+          <div class="tip-options">
+            <button data-tip="0" class="btn tip-btn">No tip</button>
+            <button data-tip="10" class="btn tip-btn">₹10</button>
+            <button data-tip="20" class="btn tip-btn">₹20</button>
+            <button data-tip="custom" class="btn tip-btn">Custom</button>
+          </div>
+          <input id="customTip" type="number" class="hidden" placeholder="Enter tip ₹" min="0" />
+        </div>
+
+        <button id="reviewOrder" class="btn primary full">Review & Pay</button>
+
+        <div class="trust">
+          <div>✔ 100% Secure Payments</div>
+          <div>✔ Freshly prepared meals</div>
+          <div>✔ Delivered with care</div>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Order Review Modal -->
+  <div id="reviewModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="reviewTitle">
+    <div class="modal-panel">
+      <button class="modal-close" id="closeReview">&times;</button>
+      <h3 id="reviewTitle">Confirm Your Order</h3>
+      <div id="reviewContent" class="review-content"></div>
+      <label class="confirm-checkbox"><input type="checkbox" id="confirmCheck"> I confirm the details are correct</label>
+      <div class="modal-actions">
+        <button class="btn ghost" id="editOrder">Edit</button>
+        <button class="btn primary" id="proceedPayment" disabled>Proceed to Payment</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Payment Modal (simple simulated) -->
+  <div id="paymentModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="payTitle">
+    <div class="modal-panel">
+      <button class="modal-close" id="closePayment">&times;</button>
+      <h3 id="payTitle">Choose Payment Method</h3>
+      <div class="payment-options">
+        <button class="btn pay-option" data-method="razorpay">Razorpay (Secure)</button>
+        <button class="btn pay-option" data-method="upi">UPI Deep Link</button>
+        <button class="btn pay-option" data-method="cod">Cash on Delivery</button>
+      </div>
+      <div id="paymentMsg" class="coupon-msg"></div>
+    </div>
+  </div>
+
+  <!-- Thank you modal -->
+  <div id="thanksModal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-panel small">
+      <h3>Thank you for your order!</h3>
+      <p id="orderRef">Order #XXXX placed. We'll deliver shortly.</p>
+      <button class="btn primary" id="closeThanks">Close</button>
+    </div>
+  </div>
+
+  <script src="checkout.js"></script>
+</body>
+</html>

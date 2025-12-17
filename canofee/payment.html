@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Payment | CANOFEE</title>
+
+  <link rel="stylesheet" href="payment.css">
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="site-header">
+  <div class="wrap">
+    <h1>Complete Payment</h1>
+    <p class="sub">Secure checkout • CANOFEE</p>
+  </div>
+</header>
+
+<!-- ================= MAIN ================= -->
+<main class="wrap layout">
+
+  <!-- ===== LEFT : ORDER SUMMARY ===== -->
+  <section class="left-col card slide-in">
+    <div class="section-head">
+      <h2>Order Summary</h2>
+      <span id="itemCount" class="muted">0 items</span>
+    </div>
+
+    <div id="orderList" class="order-list"></div>
+
+    <div class="summary-lines">
+      <div class="line">
+        <span>Subtotal</span>
+        <span id="p_subtotal">₹0.00</span>
+      </div>
+      <div class="line">
+        <span>Tax (5%)</span>
+        <span id="p_tax">₹0.00</span>
+      </div>
+      <div class="line">
+        <span>Delivery</span>
+        <span id="p_delivery">₹0.00</span>
+      </div>
+      <div class="line total">
+        <strong>Total</strong>
+        <strong id="p_total">₹0.00</strong>
+      </div>
+    </div>
+
+    <div class="customer-block">
+      <h3>Deliver to</h3>
+      <div id="custName" class="muted">—</div>
+      <div id="custPhone" class="muted">—</div>
+      <div id="custAddress" class="muted">—</div>
+    </div>
+  </section>
+
+  <!-- ===== RIGHT : PAYMENT ===== -->
+  <aside class="right-col card slide-in delay">
+    <h2>Choose Payment</h2>
+
+    <div class="pay-grid">
+      <button class="pay-card" data-method="razorpay">
+        <div>
+          <div class="pay-title">Razorpay / UPI</div>
+          <div class="pay-sub">Cards, UPI, Netbanking</div>
+        </div>
+        <div class="pay-right">Pay</div>
+      </button>
+
+      <button class="pay-card" data-method="upi">
+        <div>
+          <div class="pay-title">UPI ID / QR</div>
+          <div class="pay-sub">Google Pay, PhonePe</div>
+        </div>
+        <div class="pay-right">Pay</div>
+      </button>
+
+      <button class="pay-card" data-method="cod">
+        <div>
+          <div class="pay-title">Cash on Delivery</div>
+          <div class="pay-sub">Pay at your doorstep</div>
+        </div>
+        <div class="pay-right">COD</div>
+      </button>
+    </div>
+
+    <!-- UPI DETAILS -->
+    <div id="upiBox" class="upi-box hidden">
+      <p><strong>UPI ID:</strong> canofee@ybl</p>
+      <div class="row">
+        <button id="copyUpi" class="btn ghost">Copy</button>
+        <button id="openUpi" class="btn primary">Open App</button>
+      </div>
+    </div>
+
+    <div id="payMsg" class="pay-msg muted"></div>
+
+    <!-- TRUST -->
+    <div class="trust small">
+      ✔ 100% Secure Payments<br>
+      ✔ Freshly prepared meals<br>
+      ✔ Delivered with care
+    </div>
+  </aside>
+
+</main>
+
+<!-- ================= SUCCESS OVERLAY ================= -->
+<div id="successPanel" class="success-panel hidden">
+  <div class="success-card slide-in">
+    <div class="checkmark">✔</div>
+    <h3>Payment Successful</h3>
+    <p id="successText" class="muted"></p>
+  </div>
+</div>
+
+<script src="payment.js"></script>
+</body>
+</html>
